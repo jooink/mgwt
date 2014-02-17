@@ -41,7 +41,7 @@ public class HistoryTabBarButton extends TabBarButton {
    * @param css the css to use
    */
 	public HistoryTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarHistoryImage() : null);
+		super(css,MGWT.getOsDetection().isGecko() ||  MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarHistoryImage() : null);
 		setText("History");
 
 		if (imageResource != null)

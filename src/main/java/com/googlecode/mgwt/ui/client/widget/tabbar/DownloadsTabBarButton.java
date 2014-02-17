@@ -41,7 +41,7 @@ public class DownloadsTabBarButton extends TabBarButton {
    * @param css the css to use
    */
 	public DownloadsTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarDownloadsImage() : null);
+		super(css, MGWT.getOsDetection().isGecko() || MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarDownloadsImage() : null);
 		setText("Downloads");
 	}
 

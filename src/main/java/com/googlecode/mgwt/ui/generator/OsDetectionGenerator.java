@@ -99,11 +99,11 @@ public class OsDetectionGenerator extends Generator {
 		writer.println("}");
 
 		writer.println("public boolean isTablet() {");
-		writer.println("return isDesktop() || isIPad() || isAndroidTablet();");
+		writer.println("return isDesktop() || isIPad() || isAndroidTablet() || isGeckoTablet();");
 		writer.println("}");
 
 		writer.println("public boolean isPhone() {");
-		writer.println("return isIPhone() || isAndroidPhone() || isBlackBerry();");
+		writer.println("return isIPhone() || isAndroidPhone() || isBlackBerry() || isB2G() || isGeckoMobile();");
 		writer.println("}");
 
 		writer.println("public boolean isAndroidTablet() {");
@@ -120,6 +120,22 @@ public class OsDetectionGenerator extends Generator {
 
 		writer.println("public boolean isIPadRetina() {");
 		writer.println("return " + mgwtProperty.equals("ipad_retina") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isGecko() {");
+		writer.println("return isB2G() || isGeckoMobile() || isGeckoTablet();");
+		writer.println("}");
+
+		writer.println("public boolean isB2G() {");
+		writer.println("return " + mgwtProperty.equals("b2g") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isGeckoMobile() {");
+		writer.println("return " + mgwtProperty.equals("gecko_mobile") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isGeckoTablet() {");
+		writer.println("return " + mgwtProperty.equals("gecko_tablet") + ";");
 		writer.println("}");
 
 		writer.commit(logger);

@@ -42,7 +42,7 @@ public class MoreTabBarButton extends TabBarButton {
    * @param css the css to use
    */
 	public MoreTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMoreImage() : null);
+		super(css, MGWT.getOsDetection().isGecko() || MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMoreImage() : null);
 
 		setText("More");
 		icon.getStyle().setPosition(Position.RELATIVE);

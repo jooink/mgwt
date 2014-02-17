@@ -41,7 +41,7 @@ public class FavoritesTabBarButton extends TabBarButton {
    * @param css the css to use
    */
 	public FavoritesTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarFavoritesImage() : null);
+		super(css, MGWT.getOsDetection().isGecko() || MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarFavoritesImage() : null);
 		setText("Favorites");
 	}
 

@@ -42,7 +42,7 @@ public class ContactsTabBarButton extends TabBarButton {
    * @param css the css to use
    */
 	public ContactsTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarContactsImage() : null);
+		super(css, MGWT.getOsDetection().isGecko() || MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarContactsImage() : null);
 
 		setText("Contacts");
 		if (imageResource != null)

@@ -22,9 +22,9 @@
        
        Here, we reset the mobile.user.agent property and define a property-provider
        for it, so as we can test specific mobile stuff, like themes, in desktop browsers.
-       To do that, just set the property value of mgwt.os to only one option in your 
+       To do that, just set the property value of m gwt.os to only one option in your 
        module, for instance:
-          <set-property name="mgwt.os" value="iphone" />
+          <set-property name="m gwt.os" value="iphone" />
        
        Notice that this generates more permutations than including the MGWTMin module.
        @see http://code.google.com/p/mgwt/issues/detail?id=215
@@ -36,11 +36,12 @@
     <set-property name="mobile.user.agent" value="not_mobile" >
       <none>
         <when-property-is name="user.agent" value="safari" />
-      </none>
+        <when-property-is name="user.agent" value="gecko1_8" />
+        </none>
     </set-property>
     <property-provider name="mobile.user.agent">
       <![CDATA[
-        return /(android|iphone|ipod|ipad)/i.test(window.navigator.userAgent) 
+        return /(android|iphone|ipod|ipad|mobile)/i.test(window.navigator.userAgent) 
           ? 'mobilesafari': 'not_mobile';
       ]]>
     </property-provider>

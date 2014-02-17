@@ -19,11 +19,30 @@
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.googlecode.mgwt.collection.GwtCollections'/>
     
-    <define-property name="mgwt.os" values="iphone, ipad, retina, ipad_retina, android, android_tablet, blackberry, desktop" />
+    <define-property name="mgwt.os" values="iphone, ipad, retina, ipad_retina, android, android_tablet, b2g, gecko_mobile, gecko_tablet, blackberry, desktop" />
+      
+        
     <property-provider name="mgwt.os"><![CDATA[
     {
       var mgwt_os = (function(){
         var ua = window.navigator.userAgent.toLowerCase();
+
+  	//alert(ua);
+
+   	if(ua.indexOf('gecko') != -1) {
+   	    if(ua.indexOf('android') != -1) {
+   	    	if(ua.indexOf('mobile') != -1) {
+	            return "gecko_mobile";
+          	} 
+  	    	if(ua.indexOf('tablet') != -1) {
+	            return "gecko_tablet";  
+          	} 
+          }
+          if(ua.indexOf('mobile') != -1) 
+            return "b2g";
+
+          return "desktop";
+        }
         
         if(ua.indexOf('android') != -1) {
           if(ua.indexOf('mobile') != -1) {
@@ -59,15 +78,28 @@
     }
     ]]></property-provider>
 
-    <!-- non-safari browsers are always desktop -->
+    
+      <!-- Only support b2g, gecko_* and desktop themes on gecko1_8 to avoid a load of extra work -->
+   <set-property name="mgwt.os" value="b2g, desktop, gecko_mobile, gecko_tablet">
+      <when-property-is name="user.agent" value="gecko1_8"/>
+   </set-property>
+
+   <set-property name="mgwt.os" value="iphone, ipad, retina, ipad_retina, android, android_tablet, blackberry, desktop">
+      <when-property-is name="user.agent" value="safari"/>
+   </set-property>
+   
+   
+    <!-- non-safari non-gecko browsers are always desktop -->
     <set-property name="mgwt.os" value="desktop" >
       <none>
-        <when-property-is name="user.agent" value="safari" />
+       <when-property-is name="user.agent" value="safari" />
+       <when-property-is name="user.agent" value="gecko1_8" />
       </none>
     </set-property>
     
-    <!--  derived property, so as we do not add permutations unless we define 
-          a property-provider for it -->
+    
+    
+    <!--  derived property, so as we do not add permutations unless we define a property-provider for it -->
     <define-property name="mobile.user.agent" values="mobilesafari,not_mobile" />
     <!-- default -->
     <set-property name="mobile.user.agent" value="mobilesafari" />
@@ -78,7 +110,24 @@
         <when-property-is name="mgwt.os" value="blackberry" />
       </any>
     </set-property>
-
+    
+    <!--  this is acrually unused at least when MGWT.gwt.xml is inherited -->
+    <set-property name="mobile.user.agent" value="mobilesafari" >
+      <any>
+        <when-property-is name="mgwt.os" value="b2g" />
+        <when-property-is name="mgwt.os" value="gecko_mobile" />
+        <when-property-is name="mgwt.os" value="gecko_tablet" />
+        <when-property-is name="mgwt.os" value="ipad" />
+        <when-property-is name="mgwt.os" value="iphone" />
+        <when-property-is name="mgwt.os" value="ipad_retina" />
+        <when-property-is name="mgwt.os" value="iphone_retina" />
+        <when-property-is name="mgwt.os" value="android" />
+        <when-property-is name="mgwt.os" value="android_tablet" />
+        </any>
+    </set-property>
+    
+    
+    
     <!-- event propagator -->
      <replace-with class="com.googlecode.mgwt.dom.client.recognizer.EventPropagatorStandardImpl">
         <when-type-is class="com.googlecode.mgwt.dom.client.recognizer.EventPropagator"/>

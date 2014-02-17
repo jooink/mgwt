@@ -120,7 +120,7 @@ public interface OsDetection {
 	 * Are we running on a phone
 	 * 
 	 * @return true if we are running on any kind of phone (iphone, ipod touch,
-	 *         android phone, blackberry), otherwise false
+	 *         android phone, blackberry b2g tooo), otherwise false
 	 */
 	public boolean isPhone();
 
@@ -131,4 +131,34 @@ public interface OsDetection {
 	 */
 	public boolean isBlackBerry();
 
+
+	
+	/**
+	 * Are we running on a gecko device, isB2g || isGecko*, equivalent to useragent=gecko1_8 but required for styling 
+	 * XXX should probably removed as soon as a better set of parameters are found 
+	 * 
+	 * @return true if running on a gecko device, otherwise false
+	 */
+	public boolean isGecko();
+
+	/**
+	 * Are we running on a b2g device
+	 * 
+	 * @return true if running on a B2Gs device, otherwise false
+	 */
+	public boolean isB2G();
+
+	/**
+	 * Are we running on a gecko_mobile device
+	 * 
+	 * @return true if running on a gecko on mobile device, otherwise false
+	 */
+	public boolean isGeckoMobile();
+
+	/**
+	 * Are we running on a gecko_tablet device
+	 * 
+	 * @return true if running on a gecko on tablet device, otherwise false
+	 */
+	public boolean isGeckoTablet();
 }

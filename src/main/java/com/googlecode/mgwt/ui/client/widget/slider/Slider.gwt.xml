@@ -20,6 +20,10 @@ under * the License.
 			<when-property-is name="mgwt.os" value="retina" />
 			<when-property-is name="mgwt.os" value="ipad_retina" />
 			<when-property-is name="mgwt.os" value="desktop" />
+
+			<when-property-is name="mgwt.os" value="gecko_mobile" />
+			<when-property-is name="mgwt.os" value="gecko_tablet" />
+			<when-property-is name="mgwt.os" value="b2g" />
 		</any>
 	</replace-with>
 	

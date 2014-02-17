@@ -41,7 +41,7 @@ public class BookmarkTabBarButton extends TabBarButton {
    * @param css the css to use
    */
   public BookmarkTabBarButton(TabBarCss css) {
-    super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle
+    super(css, MGWT.getOsDetection().isGecko() || MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle
         .getTheme().getMGWTClientBundle().tabBarBookMarkImage() : null);
 		setText("Bookmarks");
 	}

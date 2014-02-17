@@ -5,8 +5,10 @@ import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.OsDetection;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeAndroid;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeAndroidTablet;
+import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeGeckoMobile;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeBlackberry;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeDesktop;
+import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeGeckoTablet;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeIPad;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeIPadRetina;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeIPhone;
@@ -51,6 +53,19 @@ public class MGWTThemeBaseThemeStandardImpl implements MGWTTheme {
 
     if (detection.isDesktop()) {
       bundle = GWT.create(MGWTClientBundleBaseThemeDesktop.class);
+    }
+
+
+    if (detection.isGeckoMobile()) { 
+        bundle = GWT.create(MGWTClientBundleBaseThemeGeckoMobile.class);
+      }
+
+    if (detection.isGeckoTablet()) { 
+        bundle = GWT.create(MGWTClientBundleBaseThemeGeckoTablet.class);
+      }
+
+    if (detection.isB2G()) {
+        bundle = GWT.create(MGWTClientBundleBaseThemeGeckoMobile.class);
     }
 
   }
