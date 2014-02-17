@@ -61,6 +61,7 @@
 		\-moz-appearance: none;
 		\-moz-user-select: text;
 		\-moz-tap-highlight-color: rgba(0, 0, 0, 0);
+		background-image: none;
 	}
 }
 
