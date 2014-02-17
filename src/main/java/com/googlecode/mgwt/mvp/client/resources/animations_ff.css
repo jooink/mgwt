@@ -195,7 +195,8 @@
 
 
 .swap {
-	\-moz-transform: perspective(800);
+/* 	\-moz-transform: scale(.3); */
+/* 	\-moz-transform: perspective(800); */
 	\-moz-animation-duration: .7s;
 }
 .swap.out {
@@ -214,12 +215,12 @@
 
 @-moz-keyframes swapouttoright {
     0% {
-         \-moz-transform: translateX(0%) scale(0.3);
+         \-moz-transform: translateX(0%) scale(1);
         
     }
    
     100% {
-         \-moz-transform: translateX(100%) scale(1);
+         \-moz-transform: translateX(100%) scale(0.3);
     }
 }
 
