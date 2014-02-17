@@ -40,6 +40,7 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.CarouselCss;
+import com.googlecode.mgwt.ui.client.widget.Carousel.CarouselImpl;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
@@ -405,20 +406,35 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
    */
   public static class CarouselImplGecko implements CarouselImpl {
 
-    @Override
-    public void adjust(FlowPanel main, FlowPanel container) {
-      int widgetCount = container.getWidgetCount();
-      int offsetWidth = main.getOffsetWidth();
+		 @Override
+		 public void adjust(final FlowPanel main, final FlowPanel container) {
 
-      container.setWidth(widgetCount * offsetWidth + "px");
+			 
+			 main.getElement().getStyle().setOpacity(0);
+			 Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+				
+				@Override
+				public void execute() {
+					 int widgetCount = container.getWidgetCount();
+					 int offsetWidth = main.getOffsetWidth();
 
-      for (int i = 0; i < widgetCount; i++) {
-        container.getWidget(i).setWidth(offsetWidth + "px");
-      }
 
-    }
+					 container.setWidth(widgetCount * offsetWidth + "px");
 
-  }
+					 for (int i = 0; i < widgetCount; i++) {
+						 container.getWidget(i).setWidth(offsetWidth + "px");
+					 }
+					 main.getElement().getStyle().setOpacity(1);
+					
+				}
+			});
+			 
+
+
+
+		 }
+
+	 }
 
   /**
    * Set if carousel indicator is displayed.
