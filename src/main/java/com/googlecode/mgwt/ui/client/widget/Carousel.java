@@ -40,7 +40,6 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.CarouselCss;
-import com.googlecode.mgwt.ui.client.widget.Carousel.CarouselImpl;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
@@ -288,6 +287,14 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   protected void onAttach() {
     super.onAttach();
     refresh();
+    
+	 Scheduler.get().scheduleDeferred(new ScheduledCommand() {			
+		@Override
+		public void execute() {
+			refresh();
+		}
+	});
+
   }
 
   /**
