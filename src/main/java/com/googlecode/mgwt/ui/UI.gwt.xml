@@ -202,7 +202,24 @@ under * the License.
 	<!-- Orientation handler -->
     <replace-with class="com.googlecode.mgwt.ui.client.util.impl.IOSOrientationHandler">
         <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
-    </replace-with>
+          <none>
+                <when-property-is name="mgwt.os" value="b2g" />
+                <when-property-is name="mgwt.os" value="gecko_tablet" />
+                <when-property-is name="mgwt.os" value="gecko_phone" />
+                <when-property-is name="mgwt.os" value="desktop" />
+          </none>
+      </replace-with>
+  
+    <!--  the IOS handler does not works on gecko ??!?! -->
+    <replace-with class="com.googlecode.mgwt.ui.client.util.impl.ResizeOrientationHandler">
+        <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
+          <any>
+                <when-property-is name="mgwt.os" value="b2g" />
+                <when-property-is name="mgwt.os" value="gecko_tablet" />
+                <when-property-is name="mgwt.os" value="gecko_phone" />
+                <when-property-is name="mgwt.os" value="desktop" />
+          </any>
+        </replace-with>
     
     <!-- 
     Uncomment this to use exactly the old implementation
