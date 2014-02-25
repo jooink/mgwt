@@ -114,12 +114,13 @@ public class HeaderList<G, T> extends Composite {
 			int height = absoluteBottom - absoluteTop;
 
 			int index = (normalized_y * renderedEntries) / height;
+			Integer selected = mapping.get(index);
 
-			if (index != selectedIndex) {
-				SelectionEvent.fire(this, mapping.get(index));
+			if (index != selectedIndex && selected != null) {
+				SelectionEvent.fire(this,selected );
+				selectedIndex = index;
 			}
 
-			selectedIndex = index;
 
 		}
 
