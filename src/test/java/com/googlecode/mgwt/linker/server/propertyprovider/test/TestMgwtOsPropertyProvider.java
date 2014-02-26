@@ -173,6 +173,39 @@ public class TestMgwtOsPropertyProvider {
   }
 
   @Test
+  public void testGetPropertyValueGeckoMobile() throws PropertyProviderException {
+    HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
+    Mockito.when(mockServletRequest.getHeader("User-Agent")).thenReturn(
+        UserAgents.GECKO_MOBILE_USER_AGENT);
+
+    String propertyValue = provider.getPropertyValue(mockServletRequest);
+
+    Assert.assertEquals("gecko_mobile", propertyValue);
+  }
+
+  @Test
+  public void testGetPropertyValueGeckoTablet() throws PropertyProviderException {
+    HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
+    Mockito.when(mockServletRequest.getHeader("User-Agent")).thenReturn(
+        UserAgents.GECKO_TABLET_USER_AGENT);
+
+    String propertyValue = provider.getPropertyValue(mockServletRequest);
+
+    Assert.assertEquals("gecko_tablet", propertyValue);
+  }
+  
+  @Test
+  public void testGetPropertyValueB2G() throws PropertyProviderException {
+    HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
+    Mockito.when(mockServletRequest.getHeader("User-Agent")).thenReturn(
+        UserAgents.GECKO_B2G_USER_AGENT);
+
+    String propertyValue = provider.getPropertyValue(mockServletRequest);
+
+    Assert.assertEquals("b2g", propertyValue);
+  }
+
+  @Test
   public void testGetPropertyValueDesktopAsDefault() throws PropertyProviderException {
     HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
     Mockito.when(mockServletRequest.getHeader("User-Agent")).thenReturn("");

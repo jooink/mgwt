@@ -24,19 +24,10 @@ public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 		return "mgwt.os";
 	}
 
+	//should be in sync with the property profide in DOM.gwt.xml
 	@Override
 	public String getPropertyValue(HttpServletRequest req) throws PropertyProviderException {
 		String userAgent = getUserAgent(req);
-
-		// android
-		if (userAgent.contains("android")) {
-			if (userAgent.contains("mobile")) {
-				return "android";
-			} else {
-				return "android_tablet";
-			}
-
-		}
 
 		if (userAgent.contains("ipad")) {
 			String value = getRetinaCookieValue(req);
@@ -72,7 +63,36 @@ public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 
 		if (userAgent.contains("blackberry")) {
 			return "blackberry";
+		}		
+
+
+		//gecko1_8 
+		if(! userAgent.contains("applewebkit")) {
+			if (userAgent.contains("gecko")) {
+				if( userAgent.contains("android")) {
+					if (userAgent.contains("mobile")) { 	
+						return "gecko_mobile";	
+					}
+					if (userAgent.contains("tablet")) { 	
+						return "gecko_tablet";	
+					}
+				}
+				if (userAgent.contains("mobile")) 
+					return "b2g";
+				return "desktop";
+			}
 		}
+
+		// android
+		if (userAgent.contains("android")) {
+			if (userAgent.contains("mobile")) {
+				return "android";
+			} else {
+				return "android_tablet";
+			}
+
+		}
+
 
 		return "desktop";
 

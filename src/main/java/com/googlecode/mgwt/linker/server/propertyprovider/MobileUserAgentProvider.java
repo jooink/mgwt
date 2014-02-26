@@ -30,6 +30,15 @@ public class MobileUserAgentProvider extends PropertyProviderBaseImpl {
 		if (ua.contains("blackberry")) {
 			return "not_mobile";
 		}
+
+		if (ua.contains("gecko") && ua.contains("mobile") ) {
+			return "mobilesafari";
+		}
+		
+		if (ua.contains("gecko") && ua.contains("tablet") ) {
+			return "mobilesafari";
+		}
+
 		return "not_mobile";
 	}
 }
