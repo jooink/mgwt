@@ -2,22 +2,30 @@
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-duration: 300ms;
   -webkit-animation-fill-mode: both;
+
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-duration: 300ms;
+  -moz-animation-fill-mode: both;
 }
 
 .in {
   -webkit-animation-name: appear;
+  -moz-animation-name: appear;
 }
 
 .out {
   -webkit-animation-name: dissolve;
+  -moz-animation-name: dissolve;
 }
 
 .in.reverse {
   -webkit-animation-name: appear;
+  -moz-animation-name: appear;
 }
 
 .out.reverse {
   -webkit-animation-name: dissolve;
+  -moz-animation-name: dissolve;
 }
 
 @-webkit-keyframes dissolve {
@@ -26,6 +34,16 @@
 }
 
 @-webkit-keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-moz-keyframes dissolve {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@-moz-keyframes appear {
   from { opacity: 0; }
   to { opacity: 1; }
 }

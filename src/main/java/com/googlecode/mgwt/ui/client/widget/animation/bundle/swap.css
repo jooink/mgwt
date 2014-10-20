@@ -4,19 +4,29 @@
   -webkit-transform: perspective(800);
   -webkit-animation-duration: .7s;
   -webkit-transform-style: preserve-3d;
+
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-fill-mode: both;
+  -moz-transform: perspective(800);
+  -moz-animation-duration: .7s;
+  -moz-transform-style: preserve-3d;
 }
 
 .out {
   -webkit-animation-name: swapouttoleft;
+  -moz-animation-name: swapouttoleft;
 }
 .in {
   -webkit-animation-name: swapinfromright;
+  -moz-animation-name: swapinfromright;
 }
 .out.reverse {
   -webkit-animation-name: swapouttoright;
+  -moz-animation-name: swapouttoright;
 }
 .in.reverse {
   -webkit-animation-name: swapinfromleft;
+  -moz-animation-name: swapinfromleft;
 }
 
 
@@ -77,5 +87,65 @@
   }
   100% {
     -webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+  }
+}
+
+@-moz-keyframes swapouttoright {
+  0% {
+    -moz-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+    -moz-animation-timing-function: ease-in-out;
+  }
+  50% {
+    -moz-transform: translate3d(-180px, 0px, -400px) rotateY(20deg);
+    -moz-animation-timing-function: ease-in;
+    opacity: 0.8;
+  }
+  100% {
+      -moz-transform:  translate3d(0px, 0px, -800px) rotateY(70deg);
+      opacity: 0;
+  }
+}
+
+@-moz-keyframes swapouttoleft {
+  0% {
+    -moz-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+    -moz-animation-timing-function: ease-in-out;
+  }
+  50% {
+    -moz-transform:  translate3d(180px, 0px, -400px) rotateY(-20deg);
+    -moz-animation-timing-function: ease-in;
+    opacity: 0.8;
+  }
+  100% {
+    -moz-transform: translate3d(0px, 0px, -800px) rotateY(-70deg);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes swapinfromright {
+  0% {
+    -moz-transform: translate3d(0px, 0px, -800px) rotateY(70deg);
+    -moz-animation-timing-function: ease-out;
+  }
+  50% {
+    -moz-transform: translate3d(-180px, 0px, -400px) rotateY(20deg);
+    -moz-animation-timing-function: ease-in-out;
+  }
+  100% {
+    -moz-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+  }
+}
+
+@-moz-keyframes swapinfromleft {
+  0% {
+    -moz-transform: translate3d(0px, 0px, -800px) rotateY(-70deg);
+    -moz-animation-timing-function: ease-out;
+  }
+  50% {
+    -moz-transform: translate3d(180px, 0px, -400px) rotateY(-20deg);
+    -moz-animation-timing-function: ease-in-out;
+  }
+  100% {
+    -moz-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
   }
 }

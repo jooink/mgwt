@@ -2,26 +2,34 @@
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-duration: 300ms;
   -webkit-animation-fill-mode: both;
+
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-duration: 300ms;
+  -moz-animation-fill-mode: both;
 }
 
 .in {
   -webkit-animation-name: slideupfrombottom;
+  -moz-animation-name: slideupfrombottom;
   z-index: 10;
 }
 
 .out {
   -webkit-animation-name: slideupfrommiddle;
+  -moz-animation-name: slideupfrommiddle;
   z-index: 0;
 }
 
 .out.reverse {
   z-index: 10;
   -webkit-animation-name: slidedownfrommiddle;
+  -moz-animation-name: slidedownfrommiddle;
 }
 
 .in.reverse {
   z-index: 0;
   -webkit-animation-name: slidedownfromtop;
+  -moz-animation-name: slidedownfromtop;
 }
 
 @-webkit-keyframes slideupfrombottom {
@@ -42,4 +50,24 @@
 @-webkit-keyframes slidedownfromtop {
   from { -webkit-transform: translateY(-100%); }
   to { -webkit-transform: translateY(0%); }
+}
+
+@-moz-keyframes slideupfrombottom {
+  from { -moz-transform: translateY(100%); }
+  to { -moz-transform: translateY(0); }
+}
+
+@-moz-keyframes slidedownfrommiddle {
+  from { -moz-transform: translateY(0); }
+  to { -moz-transform: translateY(100%); }
+}
+
+@-moz-keyframes slideupfrommiddle {
+  from { -moz-transform: translateY(0); }
+  to { -moz-transform: translateY(-100%); }
+}
+
+@-moz-keyframes slidedownfromtop {
+  from { -moz-transform: translateY(-100%); }
+  to { -moz-transform: translateY(0%); }
 }

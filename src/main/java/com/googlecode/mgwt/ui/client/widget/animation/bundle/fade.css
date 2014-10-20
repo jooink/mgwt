@@ -2,21 +2,29 @@
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-duration: 300ms;
   -webkit-animation-fill-mode: both;
+
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-duration: 300ms;
+  -moz-animation-fill-mode: both;
 }
 
 .in {
   -webkit-animation-name: fadein;
+  -moz-animation-name: fadein;
 }
 .out {
   -webkit-animation-name: fadeout;
+  -moz-animation-name: fadeout;
 }
 
 .in.reverse {
   -webkit-animation-name: fadein;
+  -moz-animation-name: fadein;
 }
 
 .out.reverse {
   -webkit-animation-name: fadeout;
+  -moz-animation-name: fadeout;
 }
 
 @-webkit-keyframes fadein {
@@ -25,6 +33,16 @@
 }
 
 @-webkit-keyframes fadeout {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-moz-keyframes fadeout {
   from { opacity: 1; }
   to { opacity: 0; }
 }
