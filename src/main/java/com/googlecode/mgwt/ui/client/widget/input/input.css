@@ -44,14 +44,32 @@
   color: #CCC;
 }
 
+@if user.agent safari {
+
 .mgwt-InputBox-disabled::-webkit-input-placeholder {
   color: #CCC;
-}
-
-.mgwt-InputBox-invalid {
-  color: rgb(197, 3, 3);
 }
 
 .mgwt-InputBox-invalid::-webkit-input-placeholder {
   color: rgb(197, 3, 3);
 }
+
+}
+
+@if user.agent gecko1_8 {
+
+.mgwt-InputBox-disabled::-moz-placeholder {
+  color: #CCC;
+}
+
+.mgwt-InputBox-invalid::-moz-placeholder {
+  color: rgb(197, 3, 3);
+}
+}
+
+
+
+.mgwt-InputBox-invalid {
+  color: rgb(197, 3, 3);
+}
+

@@ -44,7 +44,7 @@
 @if user.agent gecko1_8 {
   .mgwt-CheckBox-middle {
     -moz-transition: all 0.1s ease-in-out;
-    -moz-border-radius: 6px;
+    border-radius: 6px;
   }
 }
 

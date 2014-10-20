@@ -39,7 +39,7 @@
 
 @if user.agent gecko1_8 {
   .mgwt-FlexPanel-flex {
-    -moz-flex: 1;
+    -moz-box-flex: 1;
   }
 }
 
