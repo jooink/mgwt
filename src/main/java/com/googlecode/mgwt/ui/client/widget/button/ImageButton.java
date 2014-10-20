@@ -15,6 +15,8 @@
  */
 package com.googlecode.mgwt.ui.client.widget.button;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Display;
@@ -25,7 +27,6 @@ import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
-
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.util.IconHandler;
@@ -69,7 +70,18 @@ public class ImageButton extends ButtonBase implements IsSizeable {
     this(appearance, null, text);
   }
 
-  public ImageButton(ImageButtonAppearance appearance, ImageResource iconImage, String text) {
+  @Override
+  protected void onLoad() {
+      super.onLoad();
+      Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+		@Override
+		public void execute() {
+			setIcon(icon);
+		}
+	});
+  }
+  
+  public ImageButton(ImageButtonAppearance appearance, final ImageResource iconImage, String text) {
     super(appearance);
     this.appearance = appearance;
     setElement(appearance.uiBinder().createAndBindUi(this));
@@ -88,7 +100,7 @@ public class ImageButton extends ButtonBase implements IsSizeable {
       @Override
       public void onTouchCancel(TouchCancelEvent event) {
 
-        IconHandler.setIcons(image, icon, iconColor);
+        IconHandler.setIcons(image, iconImage, iconColor);
       }
 
       @Override
