@@ -29,6 +29,13 @@
   }
 }
 
+@if user.agent gecko1_8 {
+  .mgwt-Carousel-Scroller, .mgwt-Carousel-Container  {
+    height: 100%;
+  }
+ 
+}
+
 .mgwt-Carousel-Scroller {
   flex: 1
 }
@@ -52,6 +59,12 @@
 .mgwt-Carousel-Indicator-Container {
   background-color: #DCE0DF;
   border-radius: 5px;
+}
+
+@if user.agent gecko1_8 {
+.mgwt-Carousel-Indicator-Container {
+  margin: auto;
+ }
 }
 
 .mgwt-Carousel-Indicator {

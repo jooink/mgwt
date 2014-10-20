@@ -13,7 +13,15 @@
  */
 package com.googlecode.mgwt.ui.client.widget.carousel;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
@@ -31,7 +39,6 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.HandlerRegistration;
-
 import com.googlecode.mgwt.collection.shared.LightArrayInt;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
@@ -45,12 +52,6 @@ import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * A carousel renders its children in a row.
@@ -263,6 +264,14 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   @Override
   protected void onLoad() {
     refresh();
+    
+    Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+    	@Override
+    	public void execute() {
+    		refresh();
+    	}
+    });
+    
   }
 
   /**
@@ -386,15 +395,32 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   private static class CarouselImplGecko implements CarouselImpl {
 
     @Override
-    public void adjust(Widget main, FlowPanel container) {
-      int widgetCount = container.getWidgetCount();
-      int offsetWidth = main.getOffsetWidth();
+    public void adjust(final Widget main, final FlowPanel container) {
+    
+    	//main.getElement().getStyle().setOpacity(0);
+    	Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+    	
+    	 @Override
+    	 public void execute() {
+    	 int widgetCount = container.getWidgetCount();
+    	 int offsetWidth = main.getOffsetWidth();
+    	     	 
+    	 container.setWidth(widgetCount * offsetWidth + "px");
+    	 for (int i = 0; i < widgetCount; i++) {
+    		  container.getWidget(i).setWidth(offsetWidth + "px");
+		  container.getWidget(i).getElement().getStyle().setLeft(i * offsetWidth, Unit.PX);
 
-      container.setWidth(widgetCount * offsetWidth + "px");
-
-      for (int i = 0; i < widgetCount; i++) {
-        container.getWidget(i).setWidth(offsetWidth + "px");
-      }
+    		 }
+    	 }
+    	});
+//      int widgetCount = container.getWidgetCount();
+//      int offsetWidth = main.getOffsetWidth();
+//
+//      container.setWidth(widgetCount * offsetWidth + "px");
+//
+//      for (int i = 0; i < widgetCount; i++) {
+//        container.getWidget(i).setWidth(offsetWidth + "px");
+//      }
     }
   }
 
