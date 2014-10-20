@@ -118,12 +118,12 @@
 
 @if user.agent gecko1_8 {
 	.mgwt-Scrollbar-Bar {
-		\-moz-background-clip:padding-box;
-		\-moz-box-sizing:border-box;
-		\-moz-transition-property:literal('-webkit-transform');
-		\-moz-transition-timing-function:cubic-bezier(0.33,0.66,0.66,1);
-		\-moz-transform: translate('0,0');
-		\-moz-transition-duration:0;
+		background-clip:padding-box;
+		box-sizing:border-box;
+		transition-property:literal('-moz-transform');
+		transition-timing-function:cubic-bezier(0.33,0.66,0.66,1);
+		transform: translate(0,0);
+		transition-duration: 0;
 	}
 }
 

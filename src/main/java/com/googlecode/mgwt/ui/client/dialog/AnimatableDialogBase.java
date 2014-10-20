@@ -76,9 +76,11 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 				if (Node.is(eventTarget)) {
 					if (Element.is(eventTarget)) {
 						Element endTarget = eventTarget.cast();
-
-						if (endTarget == shadow && startTarget == shadow) {
-							maybeHide();
+//						System.err.println("TOUCHEND: " + shadow + " e:" + endTarget + " s:" + startTarget);
+//						if (endTarget == shadow && startTarget == shadow) {
+						if(startTarget == endTarget) {
+							if(startTarget.isOrHasChild(shadow))
+								maybeHide();
 						}
 
 					}

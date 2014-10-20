@@ -15,7 +15,7 @@
 @if user.agent gecko1_8 {
 	.mgwt-DialogPanel {
 		border-radius: 10px;
-		\-moz-box-shadow: 0px 4px 6px #666666, 0 0 50px rgba(255, 255, 255, 1);
+		box-shadow: 0px 4px 6px #666666, 0 0 50px rgba(255, 255, 255, 1);
 		background-image: literal('-moz-linear-gradient(top, rgba(0, 15, 70, 0.5), rgba(0, 0, 70, 0.5))');
 	}
 }
@@ -37,7 +37,6 @@
 
 @if user.agent gecko1_8 {
 	.mgwt-DialogPanel .container {
-		\-moz-border-radius: 10px;
 		border-radius: 10px;
 		padding: 5px;
 		/*TODO background */
@@ -66,10 +65,8 @@
 
 @if user.agent gecko1_8 {
 	.mgwt-DialogPanel .title {
-		\-moz-border-radius-topright: 10px;
-		\-moz-border-radius-topleft: 10px;
-		border-radius-topright: 10px;
-		border-radius-topleft: 10px;
+		border-top-right-radius: 10px;
+		border-top-left-radius: 10px;
 	}
 }
 
@@ -134,7 +131,6 @@
 @if user.agent gecko1_8 {
 	.mgwt-DialogPanel .okbutton,.mgwt-DialogPanel .cancelbutton {
 		\-moz-box-flex: 2;
-		\-moz-border-radius: 8px;
 		border-radius: 8px;
 	}
 	.mgwt-DialogPanel .okbutton {

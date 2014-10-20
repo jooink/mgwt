@@ -16,7 +16,7 @@
 @if user.agent gecko1_8 {
 	.mgwt-ProgressBar {
 		background-size: 25px 15px;
-		\-moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+		box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
 		\-moz-box-sizing: border-box;
 		background-image: literal('-moz-linear-gradient(top left ,  rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.7) 30%, rgba(255, 255, 255, 1) 31%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0.7) 71%, rgba(255, 255, 255, 0) 80% ), -moz-linear-gradient(top, rgba(0, 0, 0, .2) 5%, rgba(255, 255, 255, .8) 6%, rgba(255, 255, 255, .05) 40%, rgba(0, 0, 0, .05) 60% , rgba(0, 0, 0, .2) 90% , rgba(0, 0, 0, .5) 98% ), -moz-linear-gradient(top, rgba(255,255,255, 1) 20%, rgba(255, 255, 255, .5) 21%, rgba(255, 255, 255, .5) 50% ,  rgba(255, 255, 255, 1) 51%)');
 	}

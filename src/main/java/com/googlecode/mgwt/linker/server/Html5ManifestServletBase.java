@@ -56,12 +56,20 @@ public class Html5ManifestServletBase extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+   String userAgent = req.getHeader("User-Agent");
+   System.err.println(userAgent);
+
+	  
     String moduleName = getModuleName(req);
 
     String baseUrl = getBaseUrl(req);
 
     Set<BindingProperty> computedBindings = calculateBindinPropertiesForClient(req);
 
+    for(BindingProperty cb: computedBindings) {
+    	System.err.println( cb.getName() + " = " + cb.getValue());
+    }
+    
     String strongName = getPermutationStrongName(baseUrl, moduleName, computedBindings);
 
     if (strongName != null) {
@@ -111,8 +119,7 @@ public class Html5ManifestServletBase extends HttpServlet {
 
     // if we got here we just don`t know the device react with 500 -> no
     // manifest...
-
-    throw new ServletException("unkown device");
+    throw new ServletException("unkown device: " + userAgent);
 
   }
 

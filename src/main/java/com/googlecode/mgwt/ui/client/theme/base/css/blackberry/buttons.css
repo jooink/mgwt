@@ -19,7 +19,6 @@
 
 @if user.agent gecko1_8 {
 	.mgwt-Button {
-		\-moz-border-radius: 4px;
 		border-radius: 4px;
 	}
 	.mgwt-Button.mgwt-Button-active {
