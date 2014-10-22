@@ -263,15 +263,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
   @Override
   protected void onLoad() {
-    refresh();
-    
-    Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-    	@Override
-    	public void execute() {
-    		refresh();
-    	}
-    });
-    
+    refresh();    
   }
 
   /**
@@ -394,34 +386,25 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   @SuppressWarnings("unused")
   private static class CarouselImplGecko implements CarouselImpl {
 
-    @Override
-    public void adjust(final Widget main, final FlowPanel container) {
-    
-    	//main.getElement().getStyle().setOpacity(0);
-    	Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-    	
-    	 @Override
-    	 public void execute() {
-    	 int widgetCount = container.getWidgetCount();
-    	 int offsetWidth = main.getOffsetWidth();
-    	     	 
-    	 container.setWidth(widgetCount * offsetWidth + "px");
-    	 for (int i = 0; i < widgetCount; i++) {
-    		  container.getWidget(i).setWidth(offsetWidth + "px");
-		  container.getWidget(i).getElement().getStyle().setLeft(i * offsetWidth, Unit.PX);
+	  @Override
+	  public void adjust(final Widget main, final FlowPanel container) {
 
-    		 }
-    	 }
-    	});
-//      int widgetCount = container.getWidgetCount();
-//      int offsetWidth = main.getOffsetWidth();
-//
-//      container.setWidth(widgetCount * offsetWidth + "px");
-//
-//      for (int i = 0; i < widgetCount; i++) {
-//        container.getWidget(i).setWidth(offsetWidth + "px");
-//      }
-    }
+		  Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+
+			  @Override
+			  public void execute() {
+				  int widgetCount = container.getWidgetCount();
+				  int offsetWidth = main.getOffsetWidth();
+
+				  container.setWidth(widgetCount * offsetWidth + "px");
+				  for (int i = 0; i < widgetCount; i++) {
+					  container.getWidget(i).setWidth(offsetWidth + "px");
+					  container.getWidget(i).getElement().getStyle().setLeft(i * offsetWidth, Unit.PX);
+
+				  }
+			  }
+		  });
+	  }
   }
 
   /**
